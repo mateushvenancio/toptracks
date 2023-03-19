@@ -31,14 +31,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meu app'),
-      ),
-      body: Center(
-        child: TextButton(
-          child: const Text('LOGIN'),
-          onPressed: () {},
+    return const Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Text(
+            'TOPTRACKS',
+            style: TextStyle(
+              fontSize: 36,
+            ),
+          ),
         ),
       ),
     );

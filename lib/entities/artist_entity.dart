@@ -10,4 +10,6 @@ class ArtistEntity {
     required this.spotifyUrl,
     required this.images,
   });
+
+  String get imageUrl => images.first;
 }

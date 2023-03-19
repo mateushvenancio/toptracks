@@ -12,4 +12,6 @@ class TrackEntity {
     required this.artists,
     required this.album,
   });
+
+  String get imageUrl => album.images.first;
 }

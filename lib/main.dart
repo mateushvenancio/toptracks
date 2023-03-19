@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:toptracks/datasource/api_datasource/api_auth_repository.dart';
 import 'package:toptracks/datasource/api_datasource/api_items_repository.dart';
@@ -51,6 +52,19 @@ class MyApp extends StatelessWidget {
         title: 'Top Tracks',
         debugShowCheckedModeBanner: false,
         routerConfig: _router,
+        darkTheme: ThemeData.dark(),
+        theme: ThemeData(
+          colorScheme: const ColorScheme.dark(
+            background: Color(0xff393E46),
+          ),
+          textTheme: GoogleFonts.cousineTextTheme(
+            const TextTheme(
+              bodyLarge: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -24,6 +24,24 @@ class HomeController extends ChangeNotifier {
   List<ArtistEntity> artists = [];
   List<TrackEntity> tracks = [];
 
+  final pageController = PageController();
+  int homeIndex = 0;
+  setHomeIndex(int value) {
+    homeIndex = value;
+    notifyListeners();
+    pageController.animateToPage(
+      value,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.ease,
+    );
+  }
+
+  String get pageTitle {
+    if (homeIndex == 0) return 'Faixas';
+    if (homeIndex == 1) return 'Artistas';
+    return '';
+  }
+
   toggleLoading(bool value) {
     loading = value;
     notifyListeners();

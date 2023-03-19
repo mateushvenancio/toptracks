@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:toptracks/core/constants.dart';
+import 'package:toptracks/presenter/components/main_button_component.dart';
 import 'package:toptracks/presenter/controllers/home_controller.dart';
 import 'package:toptracks/repositories/i_auth_repository.dart';
 import 'package:toptracks/repositories/i_storage_repository.dart';
@@ -48,14 +49,45 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextButton(
-          onPressed: () {
-            context.read<IAuthRepository>().login();
-            _listenEvents();
-          },
-          child: const Text('FAZER LOGIN'),
-        ),
+      body: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(32),
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'TOPTRACKS',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
+                ),
+                Text(
+                  'Usamos seu login apenas para coletar '
+                  'as músicas e artistas que você mais ouve, '
+                  'e não armazenamos nenhuma informação 😄',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            padding: const EdgeInsets.all(16),
+            child: MainButtonComponent(
+              label: 'FAZER LOGIN',
+              onTap: () {
+                context.read<IAuthRepository>().login();
+                _listenEvents();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
